@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <form>
+    <select (change)=onChange($event.target.value)>
+      <option [value]="room.id" *ngFor="let room of rooms"> {{room.name}}</option>
+    </select> <br>
+
+    nome: <input #n> <br>
+    cognome : <input #c> <br>
+    da: <input type = "date" #d> <br>
+    a: <input type = "date" #e> <br>
+
+    <button (click)= "onClick(n,c,d,e)"> Prenota </button>
+
+  </form>
+
+
+  {{selectedRoom | json}}
+
+ <ul>
+   <li *ngFor="let pren of bookingList">
+    {{pren | json}}
+   </li>
+ </ul> 
+ 
+
+ {{bookingList | json}}
