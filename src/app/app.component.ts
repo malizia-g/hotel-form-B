@@ -29,7 +29,7 @@ export class AppComponent {
   makeTypedRequest() : void
  {
    //oFoo : Observable<Foo[]>; va dichiarato tra gli attributi della classe
-   this.obsList = this.http.get<Booking[]>('http://localhost:3000/booking');
+   this.obsList = this.http.get<Booking[]>('https://my-json-server.typicode.com/malizia-g/hotel/booking');
    this.obsList.subscribe(data => {this.bookingList = data;});
  }
 
