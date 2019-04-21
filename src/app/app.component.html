@@ -23,7 +23,7 @@
 
  <ul>
    <li *ngFor="let pren of bookingList">
-    {{pren | json}}
+    {{pren.room.name}} : {{pren | json}}
    </li>
  </ul> 
  

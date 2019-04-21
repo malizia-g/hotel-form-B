@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { RoomList } from './roomLsit.model';
 import { Room } from './room.model';
 import { Booking } from './booking.model';
-import { isDefined } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-root',
@@ -15,11 +18,21 @@ export class AppComponent {
   rooms = RoomList;
   selectedRoom: Room = RoomList[0];
   bookingList : Booking[];
+  obsList : Observable<Booking[]>;
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
   ngOnInit() {
-    this.bookingList = new Array<Booking>();
+    //this.bookingList = new Array<Booking>();
+    this.makeTypedRequest()
   }
+
+  makeTypedRequest() : void
+ {
+   //oFoo : Observable<Foo[]>; va dichiarato tra gli attributi della classe
+   this.obsList = this.http.get<Booking[]>('http://localhost:3000/booking');
+   this.obsList.subscribe(data => {this.bookingList = data;});
+ }
+
 
   //Controllo se l'id della stanza selezionata è nell'elenco.
   //In questo caso imposto la variabile selectedRoom
