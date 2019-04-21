@@ -1,0 +1,52 @@
+{
+    "booking": [
+        {
+            "room": {
+                "name": "stanza dei Pini",
+                "id": 0,
+                "num_D_bed": 1,
+                "num_S_bed": 2
+            },
+            "from": "2019-04-09T00:00:00.000Z",
+            "to": "2019-04-17T00:00:00.000Z",
+            "name": "dsds",
+            "surname": "dsdsds"
+        },
+        {
+            "room": {
+                "name": "stanza degli Olmi",
+                "id": 1,
+                "num_D_bed": 2,
+                "num_S_bed": 3
+            },
+            "from": "2019-04-17T00:00:00.000Z",
+            "to": "2019-04-26T00:00:00.000Z",
+            "name": "Gino",
+            "surname": "Mango"
+        },
+        {
+            "room": {
+                "name": "stanza degli Oleandri",
+                "id": 2,
+                "num_D_bed": 0,
+                "num_S_bed": 2
+            },
+            "from": "2019-04-22T00:00:00.000Z",
+            "to": "2019-04-24T00:00:00.000Z",
+            "name": "Rino",
+            "surname": "Faggio"
+        },
+        {
+            "room": {
+                "name": "stanza dei Biancospini",
+                "id": 3,
+                "num_D_bed": 4,
+                "num_S_bed": 0
+            },
+            "from": "2019-04-06T00:00:00.000Z",
+            "to": "2019-05-31T00:00:00.000Z",
+            "name": "Lino",
+            "surname": "Cotone"
+        }
+    ]
+}
