@@ -5,13 +5,20 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http'; //Importa Il modulo http
 
+import {   //Importare le funzionalità nella nostra applicazione
+  FormsModule,
+  ReactiveFormsModule
+ } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

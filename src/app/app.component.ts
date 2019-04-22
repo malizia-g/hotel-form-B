@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { RoomList } from './roomLsit.model';
 import { Room } from './room.model';
 import { Booking } from './booking.model';
+import {  //Importa FormBuilder e FormGroup
+  FormBuilder,
+  FormGroup
+} from '@angular/forms';
 
 
 @Component({
@@ -10,30 +14,40 @@ import { Booking } from './booking.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //countryForm: FormGroup;
+  
   title = "Benvenuti all'hotel degli alberi";
   rooms = RoomList;
-  selectedRoom: Room = RoomList[0];
-  bookingList : Booking[];
+  selectedRoom: Room;
+  bookingList: Booking[];
+  bookingForm: FormGroup;
 
-  constructor() { }
+  constructor(public fb: FormBuilder) { }
   ngOnInit() {
-    this.bookingList = new Array<Booking>();
+    this.bookingForm = this.fb.group({
+      roomControl: [RoomList[0]],
+      nameControl: [''],
+      surnameControl: [''],
+      fromControl: [''],
+      toControl: ['']
+    });
+
+    this.bookingList = new Array <Booking>();
   }
 
-  //Controllo se l'id della stanza selezionata è nell'elenco.
-  //In questo caso imposto la variabile selectedRoom
-  onChange(r_id: number) {
-    RoomList.forEach(
-      (room: Room) => {
-        if (room.id == r_id) this.selectedRoom = room;
-      }
-    )
+
+  //Nell'html impostare l'html <option [ngValue]="room" ... permette di passare un oggetto 
+  onChange() {
+    //In questo modo ottengo l'oggetto selezionato
+    this.selectedRoom = this.bookingForm.controls['roomControl'].value;
   }
 
-  onClick(n: HTMLInputElement ,c : HTMLInputElement ,d : HTMLInputElement, e :HTMLInputElement ) : boolean
-  {
-    this.bookingList.push(new Booking(this.selectedRoom,new Date(d.value), new Date(e.value) ,n.value,c.value));
+  onSubmit(): boolean {
+    let room = this.bookingForm.controls['roomControl'].value;
+    let name = this.bookingForm.controls['nameControl'].value;
+    let surname = this.bookingForm.controls['surnameControl'].value;
+    let from =  this.bookingForm.controls['fromControl'].value;
+    let to =  this.bookingForm.controls['toControl'].value;
+    this.bookingList.push(new Booking(room, new Date(from), new Date(to), name, surname));
     return false;
   }
 }

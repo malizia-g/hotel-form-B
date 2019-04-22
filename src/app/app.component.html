@@ -4,17 +4,18 @@
     Welcome to {{ title }}!
   </h1>
 
-  <form>
-    <select (change)=onChange($event.target.value)>
-      <option [value]="room.id" *ngFor="let room of rooms"> {{room.name}}</option>
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+    <select (change)=onChange() [formControl] = "bookingForm.controls['roomControl']">
+      <option [ngValue]="room" *ngFor="let room of rooms"> {{room.name}}</option>
     </select> <br>
 
-    nome: <input #n> <br>
-    cognome : <input #c> <br>
-    da: <input type = "date" #d> <br>
-    a: <input type = "date" #e> <br>
+    nome: <input [formControl] = "bookingForm.controls['nameControl']"> <br>
+    cognome : <input [formControl] = "bookingForm.controls['surnameControl']"> <br>
+    da: <input type = "date" [formControl] = "bookingForm.controls['fromControl']"> <br>
+    a: <input type = "date" [formControl] = "bookingForm.controls['toControl']"> <br>
 
-    <button (click)= "onClick(n,c,d,e)"> Prenota </button>
+    <button> Prenota </button>
 
   </form>
 
@@ -26,6 +27,3 @@
     {{pren.room.name}} : {{pren | json}}
    </li>
  </ul> 
- 
-
- {{bookingList | json}}
