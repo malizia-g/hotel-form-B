@@ -35,7 +35,6 @@ export class AppComponent {
   }
 
 
-  //Nell'html impostare l'html <option [ngValue]="room" ... permette di passare un oggetto 
   onChange() {
     //In questo modo ottengo l'oggetto selezionato
     this.selectedRoom = this.bookingForm.controls['roomControl'].value;
