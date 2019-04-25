@@ -8,6 +8,6 @@ export class Booking
         public   to : Date,
         public   name : String,
         public   surname: String,
-    ) {console.log(this)}
+    ) {}
     
 }
